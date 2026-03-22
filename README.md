@@ -1,9 +1,11 @@
-# BFS & DFS Graph Visualization
 
-Project ini mensimulasikan proses daur ulang plastik menggunakan algoritma BFS dan DFS.
+
+Project ini mensimulasikan proses daur ulang plastik menggunakan algoritma
 
 ## Fitur
 - BFS & DFS (Python)
+- Heuristik
+- A*
 - Visual graph (vis.js)
 - UI interaktif
 
