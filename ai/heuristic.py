@@ -6,18 +6,18 @@ import heapq
 # Node buntu (G, I, J) diberi 99 agar tidak diprioritaskan
 # ============================================================
 heuristic = {
-    "M": 5,
-    "A": 4,
-    "B": 3,
-    "C": 3,
-    "D": 3,
-    "E": 2,
-    "F": 3,   # lebih jauh karena mengarah ke G (buntu)
-    "H": 1,
-    "T": 0,   # sudah di tujuan
-    "G": 99,  # jalan buntu
-    "I": 99,  # jalan buntu
-    "J": 99,  # jalan buntu
+    "M": 6,   # M → A → C → E → T = 2+1+2+1=6
+    "A": 4,   # A → C → E → T = 1+2+1=4
+    "B": 4,   # B → C → E → T = 1+2+1=4
+    "C": 3,   # C → E → T = 2+1=3
+    "D": 4,   # D → C → E → T = 1+2+1=4
+    "E": 1,   # E → T = 1
+    "F": 99,  # F → G → buntu
+    "H": 1,   # H → T = 1
+    "T": 0,   # tujuan
+    "G": 99,  # buntu
+    "I": 99,  # buntu
+    "J": 99,  # buntu
 }
 
 

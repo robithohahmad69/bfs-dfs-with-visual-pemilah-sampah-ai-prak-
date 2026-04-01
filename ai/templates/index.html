@@ -69,10 +69,6 @@
         }
         button:active { transform: scale(0.97); }
 
-        /* Warna tiap algoritma */
-        .btn-bfs     { background: #28a745; color: white; }
-        .btn-bfs:hover { background: #1e7e34; }
-
         .btn-dfs     { background: #007bff; color: white; }
         .btn-dfs:hover { background: #0056b3; }
 
@@ -82,17 +78,42 @@
         .btn-astar   { background: #6f42c1; color: white; }
         .btn-astar:hover { background: #5a32a3; }
 
+        /* ===== SKENARIO BADGE ===== */
+        .scenario-type {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .type-success { background: #d4edda; color: #155724; }
+        .type-fail    { background: #f8d7da; color: #721c24; }
+
         /* ===== DESC BOX ===== */
         .desc-box {
             margin-bottom: 14px;
             padding: 10px 14px;
-            background: #eef4ff;
             border-left: 4px solid #007bff;
             border-radius: 6px;
             font-size: 13px;
             color: #444;
             line-height: 1.5;
         }
+        .desc-box.success-desc { background: #eef9f2; border-left-color: #28a745; }
+        .desc-box.fail-desc    { background: #fff5f5; border-left-color: #dc3545; }
+
+        /* ===== LINTASAN YANG DIHARAPKAN ===== */
+        .expected-path {
+            margin-bottom: 14px;
+            padding: 8px 14px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+        .expected-path span { font-weight: 600; color: #1a1a2e; }
 
         /* ===== NETWORK ===== */
         #network {
@@ -119,7 +140,6 @@
         .dot-orange { background: #fd7e14; }
         .dot-purple { background: #6f42c1; }
 
-        /* Legend item - bisa diklik */
         .legend-item {
             position: relative;
             cursor: pointer;
@@ -129,16 +149,8 @@
             transition: background 0.15s, border-color 0.15s;
             user-select: none;
         }
-        .legend-item:hover {
-            background: #f0f0f0;
-            border-color: #ddd;
-        }
-        .legend-item.active-legend {
-            border-color: currentColor;
-            background: #f8f8f8;
-        }
+        .legend-item:hover { background: #f0f0f0; border-color: #ddd; }
 
-        /* Tooltip saat hover */
         .legend-item .tooltip {
             display: none;
             position: absolute;
@@ -165,7 +177,7 @@
         }
         .legend-item:hover .tooltip { display: block; }
 
-        /* ===== MODAL PENJELASAN ALGORITMA ===== */
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -207,82 +219,39 @@
         .modal-close:hover { background: #f0f0f0; color: #333; }
 
         .modal-title {
-            font-size: 17px;
-            font-weight: 600;
+            font-size: 17px; font-weight: 600;
             margin: 0 0 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
-        .modal-subtitle {
-            font-size: 12px;
-            color: #888;
-            margin: 0 0 16px 0;
-        }
-        .modal-section {
-            margin-bottom: 14px;
-        }
+        .modal-subtitle { font-size: 12px; color: #888; margin: 0 0 16px 0; }
+        .modal-section  { margin-bottom: 14px; }
         .modal-section h4 {
-            font-size: 13px;
-            font-weight: 600;
-            color: #333;
+            font-size: 13px; font-weight: 600; color: #333;
             margin: 0 0 5px 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            display: flex; align-items: center; gap: 5px;
         }
         .modal-section p, .modal-section li {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.7;
-            margin: 0;
+            font-size: 13px; color: #555; line-height: 1.7; margin: 0;
         }
-        .modal-section ul {
-            margin: 4px 0 0 18px;
-            padding: 0;
-        }
+        .modal-section ul { margin: 4px 0 0 18px; padding: 0; }
         .modal-section li { margin-bottom: 3px; }
-
-        .modal-stripe {
-            display: inline-block;
-            width: 4px;
-            height: 16px;
-            border-radius: 2px;
-            margin-right: 6px;
-            vertical-align: middle;
-        }
 
         .modal-tag {
             display: inline-block;
-            padding: 2px 9px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
+            padding: 2px 9px; border-radius: 12px;
+            font-size: 11px; font-weight: 600;
             margin: 2px 3px 2px 0;
         }
         .tag-pro  { background: #d4edda; color: #155724; }
         .tag-con  { background: #f8d7da; color: #721c24; }
 
-        /* Tabel kompleksitas */
-        .modal-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            margin-top: 6px;
-        }
+        .modal-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }
         .modal-table th {
-            background: #f1f3f5;
-            padding: 5px 10px;
-            text-align: left;
-            font-weight: 600;
-            color: #444;
+            background: #f1f3f5; padding: 5px 10px;
+            text-align: left; font-weight: 600; color: #444;
             border-bottom: 2px solid #dee2e6;
         }
-        .modal-table td {
-            padding: 5px 10px;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-        }
+        .modal-table td { padding: 5px 10px; border-bottom: 1px solid #f0f0f0; color: #555; }
 
         /* ===== INFO BOX ===== */
         .info-box {
@@ -293,89 +262,50 @@
             border-left: 5px solid #adb5bd;
             transition: border-color 0.3s, background 0.3s;
         }
-        .info-box h3 {
-            margin: 0 0 8px 0;
-            font-size: 15px;
-            color: #1a1a2e;
-        }
-        .info-box p {
-            margin: 4px 0;
-            font-size: 13px;
-            color: #444;
-            line-height: 1.6;
-        }
-        .info-box.success {
-            border-left: 5px solid #28a745;
-            background: #f0fff4;
-        }
+        .info-box h3 { margin: 0 0 8px 0; font-size: 15px; color: #1a1a2e; }
+        .info-box p  { margin: 4px 0; font-size: 13px; color: #444; line-height: 1.6; }
+        .info-box.success { border-left: 5px solid #28a745; background: #f0fff4; }
         .info-box.success h3 { color: #155724; }
-        .info-box.fail {
-            border-left: 5px solid #dc3545;
-            background: #fff5f5;
-        }
+        .info-box.fail    { border-left: 5px solid #dc3545; background: #fff5f5; }
         .info-box.fail h3 { color: #721c24; }
 
         /* ===== BADGE ===== */
         .badge {
             display: inline-block;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-right: 4px;
-            vertical-align: middle;
+            padding: 2px 10px; border-radius: 20px;
+            font-size: 11px; font-weight: 600;
+            margin-right: 4px; vertical-align: middle;
         }
-        .badge-bfs    { background: #d4edda; color: #155724; }
+        
         .badge-dfs    { background: #cce5ff; color: #004085; }
         .badge-greedy { background: #ffe5cc; color: #7d3a00; }
         .badge-astar  { background: #e8d5ff; color: #3b1a6e; }
 
-        /* ===== HEURISTIK INFO TABLE ===== */
-        .h-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 12px;
-        }
+        /* ===== HEURISTIK TABLE ===== */
+        .h-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
         .h-table th {
-            background: #f1f3f5;
-            padding: 6px 10px;
-            text-align: left;
-            font-weight: 600;
-            color: #444;
+            background: #f1f3f5; padding: 6px 10px;
+            text-align: left; font-weight: 600; color: #444;
             border-bottom: 2px solid #dee2e6;
         }
-        .h-table td {
-            padding: 5px 10px;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-        }
-        .h-table tr.active-row td {
-            font-weight: 600;
-            color: #1a1a2e;
-        }
+        .h-table td { padding: 5px 10px; border-bottom: 1px solid #f0f0f0; color: #555; }
+        .h-table tr.active-row td { font-weight: 600; color: #1a1a2e; }
 
         /* ===== CHIPS ===== */
         .path-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 10px;
+            display: flex; align-items: center;
+            flex-wrap: wrap; gap: 4px; margin-top: 10px;
         }
         .node-chip {
-            border-radius: 5px;
-            padding: 3px 9px;
-            font-size: 12px;
-            color: #333;
-            background: #e9ecef;
+            border-radius: 5px; padding: 3px 9px;
+            font-size: 12px; color: #333; background: #e9ecef;
         }
-        .chip-success   { background: #28a745; color: white; }
-        .chip-fail      { background: #e9ecef; color: #555; }
-        .chip-fail-end  { background: #dc3545; color: white; font-weight: 600; }
-        .arrow-sep      { font-size: 12px; color: #999; }
-        .arrow-success  { color: #28a745; }
-        .arrow-fail     { color: #dc3545; }
+        .chip-success  { background: #28a745; color: white; }
+        .chip-fail     { background: #e9ecef; color: #555; }
+        .chip-fail-end { background: #dc3545; color: white; font-weight: 600; }
+        .arrow-sep     { font-size: 12px; color: #999; }
+        .arrow-success { color: #28a745; }
+        .arrow-fail    { color: #dc3545; }
     </style>
 </head>
 <body>
@@ -388,16 +318,26 @@
     <!-- CONTROLS -->
     <div class="controls">
         <select id="pilihan" onchange="updateDesc()">
-            <option value="1">Skenario 1 — Plastik campuran belum disortir</option>
-            <option value="2">Skenario 2 — Plastik seragam, siap cuci massal</option>
-            <option value="3">Skenario 3 — Plastik sudah tersortir rapi</option>
-            <option value="4">Skenario 4 — Tersortir, ada indikasi zat kimia</option>
-            <option value="5">Skenario 5 — Cuci massal, polimer asing belum terdeteksi</option>
-            <option value="6">Skenario 6 — Plastik terlihat rusak parah sejak awal</option>
+            <!-- SUCCESS PATHS -->
+            <optgroup label="✅ Lintasan Berhasil (Grade Terbaik)">
+                <option value="1">Skenario 1 — Proses Lengkap </option>
+                <option value="2">Skenario 2 — Cuci Massal + Peletisasi </option>
+                <option value="3">Skenario 3 — Lintasan Pendek / Flakes </option>
+                <option value="4">Skenario 4 — Sortir + Label Bersih / Flakes </option>
+                <option value="5">Skenario 5 — Sortir + Peletisasi </option>
+                <option value="6">Skenario 6 — Cuci Massal / Flakes </option>
+            </optgroup>
+            <!-- DEAD-END PATHS -->
+            <optgroup label="❌ Lintasan Gagal (Dead-end)">
+                <option value="7">Skenario 7 — Kontaminasi Saat Pengeringan </option>
+                <option value="8">Skenario 8 — Kontaminan Tersebar Saat Cacah </option>
+                <option value="9">Skenario 9 — Label & Lem Ikut Tercacah </option>
+                <option value="10">Skenario 10 — Plastik Rusak Parah / UV </option>
+            </optgroup>
         </select>
 
         <div class="btn-group">
-            <button class="btn-bfs"    onclick="runAlgo('bfs')">▶ BFS</button>
+    
             <button class="btn-dfs"    onclick="runAlgo('dfs')">▶ DFS</button>
             <button class="btn-greedy" onclick="runAlgo('greedy')">★ Greedy</button>
             <button class="btn-astar"  onclick="runAlgo('astar')">✦ A*</button>
@@ -405,8 +345,13 @@
     </div>
 
     <!-- DESKRIPSI SKENARIO -->
-    <div id="descBox" class="desc-box">
-        📋 Plastik campuran baru masuk — belum disortir, perlu proses lengkap dari awal.
+    <div id="descBox" class="desc-box success-desc">
+        📋 Plastik campuran baru masuk — belum disortir, perlu proses lengkap dari awal hingga peletisasi.
+    </div>
+
+    <!-- LINTASAN YANG DIHARAPKAN -->
+    <div id="expectedPathBox" class="expected-path">
+        🗺️ Lintasan: <span id="expectedPath">M → A → B → C → E → H → T</span>
     </div>
 
     <!-- GRAPH -->
@@ -414,10 +359,6 @@
 
     <!-- LEGEND -->
     <div class="legend">
-        <span class="legend-item" onclick="openModal('bfs')">
-            <span class="dot dot-green"></span>BFS
-            <span class="tooltip">Telusuri level per level menggunakan Queue</span>
-        </span>
         <span class="legend-item" onclick="openModal('dfs')">
             <span class="dot dot-blue"></span>DFS
             <span class="tooltip">Masuk sedalam mungkin menggunakan Rekursi</span>
@@ -432,7 +373,7 @@
         </span>
     </div>
 
-    <!-- MODAL PENJELASAN ALGORITMA -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal-box" id="modalBox">
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -443,7 +384,7 @@
     <!-- INFO BOX -->
     <div id="infoBox" class="info-box">
         <h3>📊 Hasil Analisis</h3>
-        <p id="status">Silakan pilih kondisi dan jalankan algoritma</p>
+        <p id="status">Silakan pilih skenario dan jalankan algoritma</p>
         <div id="pathDetail"></div>
     </div>
 
@@ -453,78 +394,127 @@
 <script>
 // ===== NODE INFO =====
 const nodeInfo = {
-    M: "Sampah Masuk",
-    A: "Sorting Manual",
-    B: "Bersihkan Label",
-    C: "Pencacahan",
-    D: "Pencucian Massal",
-    E: "Pisah Jenis (Sink-Float)",
-    F: "Pengeringan",
-    H: "Peletisasi / Ekstrusi",
-    T: "Grade Terbaik",
-    G: "Grade Rendah",
-    I: "Degradasi Plastik",
-    J: "Residu / Sampah"
+    M: "Sampah Masuk (Input)",
+    A: "Pemilahan Manual (Sorting)",
+    B: "Pembersihan Label/Tutup",
+    C: "Pencacahan (Crushing/Shredding)",
+    D: "Pencucian Kimia/Panas (Washing)",
+    E: "Pemisahan Massa Jenis (Sink-Float)",
+    F: "Pengeringan (Drying)",
+    H: "Ekstrusi/Peletisasi (Melting)",
+    T: "Biji Plastik Grade Terbaik ✅",
+    G: "Kegagalan: Kontaminasi (Grade Rendah) ❌",
+    I: "Kegagalan: Degradasi Polimer (Rapuh) ❌",
+    J: "Kegagalan: Residu Tidak Terolah (Waste) ❌"
 };
 
-// Nilai heuristik tiap node (sama seperti Python)
 const heuristicVal = {
-    M:5, A:4, B:3, C:3, D:3, E:2, F:3, H:1,
-    T:0, G:99, I:99, J:99
+    "M": 6,   
+    "A": 4,   
+    "B": 4,   
+    "C": 3,   
+    "D": 4,  
+    "E": 1,   
+    "F": 99,  
+    "H": 1,   
+    "T": 0,   
+    "G": 99,
+    "I": 99,  
+    "J": 99,  
+
 };
 
 const deadEndNodes = ["G", "I", "J"];
 
-// Warna tiap algoritma
 const algoColor = {
-    bfs:    "#28a745",
     dfs:    "#007bff",
     greedy: "#fd7e14",
     astar:  "#6f42c1"
 };
+const algoLabel = { dfs:"DFS", greedy:"Greedy", astar:"A*" };
+const algoBadge = { dfs:"badge-dfs", greedy:"badge-greedy", astar:"badge-astar" };
 
-const algoLabel = {
-    bfs:    "BFS",
-    dfs:    "DFS",
-    greedy: "Greedy",
-    astar:  "A*"
-};
-
-const algoBadge = {
-    bfs:    "badge-bfs",
-    dfs:    "badge-dfs",
-    greedy: "badge-greedy",
-    astar:  "badge-astar"
-};
-
-// ===== DATA PENJELASAN ALGORITMA =====
-const algoInfo = {
-    bfs: {
-        title: "BFS — Breadth-First Search",
-        subtitle: "Pencarian Melebar / Lapis per Lapis",
-        color: "#28a745",
-        icon: "🟢",
-        struktur: "Queue (Antrian) — FIFO: First In, First Out",
-        cara: "BFS menelusuri semua node pada kedalaman (level) yang sama sebelum turun ke level berikutnya. Ibarat menyebar melingkar dari titik awal.",
-        langkah: [
-            "Masukkan node awal ke dalam Queue.",
-            "Ambil node paling depan dari Queue (popleft).",
-            "Tandai node sebagai sudah dikunjungi.",
-            "Masukkan semua tetangga yang belum dikunjungi ke belakang Queue.",
-            "Ulangi hingga ditemukan tujuan atau Queue kosong."
-        ],
-        pros: ["Menjamin jalur terpendek (jumlah langkah minimum)", "Cocok untuk graph dengan bobot seragam"],
-        cons: ["Memori besar — menyimpan semua node per level", "Tidak efisien jika tujuan ada di kedalaman jauh"],
-        kompleksitas: { waktu: "O(V + E)", ruang: "O(V)" },
-        konteks: "Pada simulasi ini, BFS menjamin rute dengan tahap paling sedikit dari Sampah Masuk ke Grade Terbaik."
+// ===== DATA SKENARIO =====
+const scenarioData = {
+    "1":  {
+        desc: "📋 Plastik campuran baru masuk — belum disortir, perlu proses lengkap dari awal hingga peletisasi.",
+        path: "M → A → B → C → E → H → T",
+        type: "success",
+        masalah: null
     },
+    "2":  {
+        desc: "📋 Plastik seragam jenis, kondisi cukup bersih — langsung cuci massal tanpa sortir manual, lalu peletisasi.",
+        path: "M → D → C → E → H → T",
+        type: "success",
+        masalah: null
+    },
+    "3":  {
+        desc: "📋 Plastik sudah tersortir rapi — langsung cacah, hasil akhir berupa flakes bersih (tanpa peletisasi).",
+        path: "M → A → C → E → T",
+        type: "success",
+        masalah: null
+    },
+    "4":  {
+        desc: "📋 Plastik tersortir dan label sudah dibersihkan — hasil akhir flakes langsung, tanpa tahap peletisasi.",
+        path: "M → A → B → C → E → T",
+        type: "success",
+        masalah: null
+    },
+    "5":  {
+        desc: "📋 Plastik tersortir, langsung dicacah lalu masuk peletisasi tanpa pembersihan label terlebih dulu.",
+        path: "M → A → C → E → H → T",
+        type: "success",
+        masalah: null
+    },
+    "6":  {
+        desc: "📋 Plastik seragam, cuci massal, hasil akhir berupa flakes langsung tanpa tahap peletisasi.",
+        path: "M → D → C → E → T",
+        type: "success",
+        masalah: null
+    },
+    "7":  {
+        desc: "⚠️ Plastik tersortir dan label dibersihkan, namun ditemukan kontaminasi warna/zat kimia yang tidak hilang saat pengeringan.",
+        path: "M → A → B → C → E → F → G",
+        type: "fail",
+        masalah: "Setelah dikeringkan (F), kontaminasi warna atau zat kimia tidak hilang → hasil menjadi Grade Rendah (G)."
+    },
+    "8":  {
+        desc: "⚠️ Plastik langsung masuk cuci massal tanpa pemilahan awal — kontaminan ikut tercacah dan sulit dipisahkan.",
+        path: "M → D → C → E → F → G",
+        type: "fail",
+        masalah: "Berbagai jenis plastik dan kontaminan masih tercampur saat dicacah. Pengeringan tidak mampu menghilangkan semuanya → Grade Rendah (G)."
+    },
+    "9":  {
+        desc: "⚠️ Plastik tersortir tapi label tidak dibersihkan — lem, label, dan kotoran ikut hancur bersama plastik saat dicacah.",
+        path: "M → A → C → E → F → G",
+        type: "fail",
+        masalah: "Kontaminasi dari label & lem ikut terfragmentasi saat dicacah. Tidak bisa dihilangkan di tahap berikutnya → Grade Rendah (G)."
+    },
+    "10": {
+        desc: "⚠️ Plastik sudah terdegradasi parah akibat paparan sinar UV — kondisi fisik sangat rapuh sebelum proses dimulai.",
+        path: "M → D → I → J",
+        type: "fail",
+        masalah: "Plastik yang terlalu lama terpapar matahari langsung hancur saat dicuci (I: Degradasi Polimer) → menjadi Residu/Sampah (J)."
+    }
+};
+
+function updateDesc() {
+    const val = document.getElementById("pilihan").value;
+    const data = scenarioData[val];
+    const box = document.getElementById("descBox");
+    box.innerText = data.desc;
+    box.className = "desc-box " + (data.type === "success" ? "success-desc" : "fail-desc");
+    document.getElementById("expectedPath").innerText = data.path;
+}
+
+// ===== MODAL DATA =====
+const algoInfo = {
     dfs: {
         title: "DFS — Depth-First Search",
         subtitle: "Pencarian Mendalam / Masuk Sedalam Mungkin",
         color: "#007bff",
-        icon: "🔵",
         struktur: "Stack (Rekursi) — LIFO: Last In, First Out",
-        cara: "DFS menelusuri satu jalur sedalam mungkin sebelum backtrack (kembali) dan mencoba jalur lain. Ibarat menelusuri lorong satu per satu sampai buntu, lalu kembali ke persimpangan.",
+        cara: "DFS menelusuri satu jalur sedalam mungkin sebelum backtrack dan mencoba jalur lain. Ibarat menelusuri lorong satu per satu sampai buntu, lalu kembali ke persimpangan.",
         langkah: [
             "Mulai dari node awal, tandai sebagai dikunjungi.",
             "Masuk ke tetangga pertama yang belum dikunjungi.",
@@ -535,15 +525,15 @@ const algoInfo = {
         pros: ["Hemat memori dibanding BFS", "Cepat jika tujuan ada di jalur awal yang dalam"],
         cons: ["Tidak menjamin jalur terpendek", "Bisa terjebak di jalur panjang atau buntu dulu"],
         kompleksitas: { waktu: "O(V + E)", ruang: "O(V) rekursi" },
-        konteks: "Pada simulasi ini, DFS menelusuri satu jalur proses daur ulang sampai menemukan hasil akhir, baru kemudian backtrack jika perlu."
+        konteks: "DFS menelusuri satu jalur proses daur ulang sampai menemukan hasil akhir, baru kemudian backtrack jika perlu.",
+        heuristik: null
     },
     greedy: {
         title: "Greedy Best-First Search",
         subtitle: "Pilih yang Terdekat ke Tujuan Berdasarkan Heuristik",
         color: "#fd7e14",
-        icon: "🟠",
         struktur: "Priority Queue (Min-Heap) berdasarkan h(n)",
-        cara: "Greedy selalu memilih node yang estimasinya paling dekat ke tujuan, tanpa mempertimbangkan berapa panjang jalur yang sudah ditempuh. Cepat, tapi bisa melewatkan jalur yang sebenarnya lebih baik.",
+        cara: "Greedy selalu memilih node yang estimasinya paling dekat ke tujuan, tanpa mempertimbangkan panjang jalur yang sudah ditempuh.",
         langkah: [
             "Masukkan node awal ke Priority Queue dengan prioritas h(node).",
             "Ambil node dengan nilai h(n) terkecil dari heap.",
@@ -555,15 +545,14 @@ const algoInfo = {
         cons: ["Tidak optimal — tidak mempertimbangkan biaya nyata g(n)", "Bisa salah jika heuristik tidak akurat"],
         kompleksitas: { waktu: "O(E log V)", ruang: "O(V)" },
         heuristik: "h(n) = estimasi jumlah langkah minimum dari node n ke T. Node buntu (G, I, J) diberi nilai 99 agar tidak diprioritaskan.",
-        konteks: "Pada simulasi ini, Greedy memilih tahapan proses yang 'terasa' paling dekat ke Grade Terbaik berdasarkan estimasi langkah."
+        konteks: "Greedy memilih tahapan proses yang 'terasa' paling dekat ke Grade Terbaik berdasarkan estimasi langkah."
     },
     astar: {
         title: "A* Search (A-Star)",
         subtitle: "Optimal: Biaya Nyata + Estimasi Heuristik",
         color: "#6f42c1",
-        icon: "🟣",
         struktur: "Priority Queue (Min-Heap) berdasarkan f(n) = g(n) + h(n)",
-        cara: "A* menggabungkan keunggulan BFS (menjamin optimal) dan Greedy (diarahkan heuristik). Setiap node dinilai dengan f(n) = g(n) + h(n), sehingga A* mempertimbangkan seberapa jauh sudah berjalan DAN seberapa jauh estimasi ke tujuan.",
+        cara: "A* menggabungkan keunggulan BFS (menjamin optimal) dan Greedy (diarahkan heuristik). Setiap node dinilai dengan f(n) = g(n) + h(n).",
         langkah: [
             "Masukkan node awal dengan f = 0 + h(start).",
             "Ambil node dengan f(n) terkecil dari Priority Queue.",
@@ -576,21 +565,16 @@ const algoInfo = {
         cons: ["Lebih lambat dari Greedy jika heuristik sangat akurat", "Butuh heuristik yang admissible (tidak melebih-lebihkan)"],
         kompleksitas: { waktu: "O(E log V)", ruang: "O(V)" },
         heuristik: "f(n) = g(n) + h(n) | g(n) = jumlah langkah nyata dari M ke n | h(n) = estimasi langkah dari n ke T",
-        konteks: "Pada simulasi ini, A* menemukan jalur proses daur ulang yang paling efisien — mempertimbangkan tahap yang sudah dilalui sekaligus estimasi sisa tahap."
+        konteks: "A* menemukan jalur proses daur ulang yang paling efisien — mempertimbangkan tahap yang sudah dilalui sekaligus estimasi sisa tahap."
     }
 };
 
-// ===== FUNGSI MODAL =====
 function openModal(algo) {
     const info = algoInfo[algo];
     const c = info.color;
-
     const prosHtml = info.pros.map(p => `<span class="modal-tag tag-pro">✓ ${p}</span>`).join(" ");
     const consHtml = info.cons.map(p => `<span class="modal-tag tag-con">✗ ${p}</span>`).join(" ");
-    const langkahHtml = info.langkah.map((l, i) =>
-        `<li><b>${i+1}.</b> ${l}</li>`
-    ).join("");
-
+    const langkahHtml = info.langkah.map((l, i) => `<li><b>${i+1}.</b> ${l}</li>`).join("");
     const heuristikSection = info.heuristik ? `
         <div class="modal-section">
             <h4>📐 Fungsi Heuristik</h4>
@@ -603,30 +587,15 @@ function openModal(algo) {
             ${info.title}
         </div>
         <p class="modal-subtitle">${info.subtitle}</p>
-
-        <div class="modal-section">
-            <h4>🗂️ Struktur Data</h4>
-            <p>${info.struktur}</p>
-        </div>
-
-        <div class="modal-section">
-            <h4>💡 Cara Kerja</h4>
-            <p>${info.cara}</p>
-        </div>
-
-        <div class="modal-section">
-            <h4>📋 Langkah-Langkah</h4>
-            <ul>${langkahHtml}</ul>
-        </div>
-
+        <div class="modal-section"><h4>🗂️ Struktur Data</h4><p>${info.struktur}</p></div>
+        <div class="modal-section"><h4>💡 Cara Kerja</h4><p>${info.cara}</p></div>
+        <div class="modal-section"><h4>📋 Langkah-Langkah</h4><ul>${langkahHtml}</ul></div>
         ${heuristikSection}
-
         <div class="modal-section">
             <h4>⚖️ Kelebihan & Kekurangan</h4>
             <div style="margin-top:6px;">${prosHtml}</div>
             <div style="margin-top:6px;">${consHtml}</div>
         </div>
-
         <div class="modal-section">
             <h4>📊 Kompleksitas</h4>
             <table class="modal-table">
@@ -634,25 +603,14 @@ function openModal(algo) {
                 <tbody><tr><td>${info.kompleksitas.waktu}</td><td>${info.kompleksitas.ruang}</td></tr></tbody>
             </table>
         </div>
-
-        <div class="modal-section">
-            <h4>🔗 Dalam Konteks Simulasi Ini</h4>
-            <p>${info.konteks}</p>
-        </div>
+        <div class="modal-section"><h4>🔗 Dalam Konteks Simulasi Ini</h4><p>${info.konteks}</p></div>
     `;
-
     document.getElementById("modalOverlay").classList.add("open");
 }
+function closeModal() { document.getElementById("modalOverlay").classList.remove("open"); }
+function closeModalOutside(e) { if (e.target === document.getElementById("modalOverlay")) closeModal(); }
 
-function closeModal() {
-    document.getElementById("modalOverlay").classList.remove("open");
-}
-
-function closeModalOutside(e) {
-    if (e.target === document.getElementById("modalOverlay")) closeModal();
-}
-
-// ===== VIS.JS =====
+// ===== VIS.JS NETWORK =====
 const nodes = new vis.DataSet(
     Object.keys(nodeInfo).map(id => ({
         id, label: id, title: nodeInfo[id],
@@ -662,12 +620,12 @@ const nodes = new vis.DataSet(
 );
 
 const edges = new vis.DataSet([
-    {from:"M",to:"A"},{from:"M",to:"D"},
-    {from:"A",to:"B"},{from:"A",to:"C"},
+    {from:"M",to:"A"}, {from:"M",to:"D"},
+    {from:"A",to:"B"}, {from:"A",to:"C"},
     {from:"B",to:"C"},
     {from:"C",to:"E"},
-    {from:"D",to:"C"},{from:"D",to:"I"},
-    {from:"E",to:"H"},{from:"E",to:"F"},{from:"E",to:"I"},
+    {from:"D",to:"C"}, {from:"D",to:"I"},
+    {from:"E",to:"H"}, {from:"E",to:"F"}, {from:"E",to:"T"},
     {from:"F",to:"G"},
     {from:"H",to:"T"},
     {from:"I",to:"J"}
@@ -683,27 +641,10 @@ const network = new vis.Network(
     }
 );
 
-// ===== DESKRIPSI SKENARIO =====
-const scenarioDesc = {
-    "1": "📋 Plastik campuran baru masuk — belum disortir, perlu proses lengkap dari awal.",
-    "2": "📋 Plastik seragam jenis, kondisi cukup bersih — siap langsung dicuci massal tanpa sortir manual.",
-    "3": "📋 Plastik sudah tersortir rapi — dapat langsung dicacah tanpa perlu pembersihan label.",
-    "4": "📋 Plastik tersortir tapi ditemukan sisa zat kimia saat pengeringan — butuh pengecekan ulang kualitas.",
-    "5": "📋 Plastik langsung masuk jalur cuci besar — namun kandungan polimer asing belum terdeteksi di awal.",
-    "6": "📋 Plastik terlihat kotor parah sejak awal — kondisi fisik diragukan sebelum proses cuci dimulai."
-};
-
-function updateDesc() {
-    const val = document.getElementById("pilihan").value;
-    document.getElementById("descBox").innerText = scenarioDesc[val];
-}
-
 // ===== RUN ALGORITMA =====
 function runAlgo(algo) {
     const pilihan = document.getElementById("pilihan").value;
     resetColors();
-
-    // Tentukan endpoint dan payload
     const isHeuristic = algo === "greedy" || algo === "astar";
     const endpoint = isHeuristic ? "/run_heuristic" : "/run";
 
@@ -720,7 +661,6 @@ function runAlgo(algo) {
     });
 }
 
-// ===== HIGHLIGHT =====
 function resetColors() {
     nodes.forEach(n => {
         nodes.update({ id: n.id, color: { background: "#e9ecef", border: "#adb5bd" } });
@@ -743,36 +683,33 @@ function highlightPath(path, algo) {
     });
 }
 
-// ===== INFO BOX =====
 function showInfo(path, algo) {
     const statusEl = document.getElementById("status");
     const detailEl = document.getElementById("pathDetail");
     const box      = document.getElementById("infoBox");
-
-    const lastNode  = path[path.length - 1];
+    const lastNode = path[path.length - 1];
     const isSuccess = lastNode === "T";
-    const label     = algoLabel[algo];
-    const badge     = algoBadge[algo];
+    const label    = algoLabel[algo];
+    const badge    = algoBadge[algo];
     const isHeuristic = algo === "greedy" || algo === "astar";
+    const scenVal  = document.getElementById("pilihan").value;
+    const masalah  = scenarioData[scenVal].masalah;
 
-    // Warna box
     box.className = isSuccess ? "info-box success" : "info-box fail";
 
-    // Status teks
     if (isSuccess) {
         statusEl.innerHTML = `✅ <span class="badge ${badge}">${label}</span> Berhasil — plastik mencapai <b>${nodeInfo["T"]}</b>`;
     } else {
-        statusEl.innerHTML = `❌ <span class="badge ${badge}">${label}</span> Gagal — proses berhenti di <b>${lastNode} (${nodeInfo[lastNode]})</b>`;
+        statusEl.innerHTML = `❌ <span class="badge ${badge}">${label}</span> Gagal — proses berhenti di <b>${lastNode}: ${nodeInfo[lastNode]}</b>`;
     }
 
-    // Build chips rute
     function buildChips(p) {
         return p.map((n, i) => {
             const isLast = i === p.length - 1;
             let cls = isSuccess ? "chip-success" : (isLast ? "chip-fail-end" : "chip-fail");
             const arrowCls = isSuccess ? "arrow-success" : "arrow-fail";
             const chip = `<span class="node-chip ${cls}" title="${nodeInfo[n]}">
-                ${n} <span style="font-size:10px;opacity:0.85">(${nodeInfo[n]})</span>
+                ${n} <span style="font-size:10px;opacity:0.85">(${nodeInfo[n].split("(")[0].trim()})</span>
             </span>`;
             return i < p.length - 1
                 ? chip + `<span class="arrow-sep ${arrowCls}"> › </span>`
@@ -780,17 +717,16 @@ function showInfo(path, algo) {
         }).join("");
     }
 
-    // Build tabel heuristik (hanya untuk Greedy & A*)
     function buildHTable(p) {
         if (!isHeuristic) return "";
         let rows = p.map((n, i) => {
-            const g = i;  // g = langkah ke-i dari start
+            const g = i;
             const h = heuristicVal[n] === 99 ? "∞" : heuristicVal[n];
             const f = heuristicVal[n] === 99 ? "∞" : g + heuristicVal[n];
             const rowClass = i === p.length - 1 ? "active-row" : "";
             return `<tr class="${rowClass}">
                 <td>${n}</td>
-                <td>${nodeInfo[n]}</td>
+                <td>${nodeInfo[n].split("(")[0].trim()}</td>
                 <td>${g}</td>
                 <td>${h}</td>
                 <td>${algo === "astar" ? f : "—"}</td>
@@ -800,34 +736,31 @@ function showInfo(path, algo) {
         return `
         <div style="margin-top:14px;">
             <p style="font-size:12px;font-weight:600;color:#555;margin-bottom:4px;">
-                ${algo === "astar"
-                    ? "📐 Detail A* — f(n) = g(n) + h(n)"
-                    : "📐 Detail Greedy — prioritas berdasarkan h(n)"}
+                ${algo === "astar" ? "📐 Detail A* — f(n) = g(n) + h(n)" : "📐 Detail Greedy — prioritas berdasarkan h(n)"}
             </p>
             <table class="h-table">
-                <thead>
-                    <tr>
-                        <th>Node</th>
-                        <th>Keterangan</th>
-                        <th>g(n) langkah</th>
-                        <th>h(n) estimasi</th>
-                        <th>${algo === "astar" ? "f(n) total" : "—"}</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Node</th><th>Keterangan</th><th>g(n)</th><th>h(n)</th><th>${algo === "astar" ? "f(n)" : "—"}</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table>
             <p style="font-size:11px;color:#aaa;margin-top:6px;">
-                g(n) = jumlah langkah nyata dari M &nbsp;|&nbsp;
-                h(n) = estimasi langkah ke T &nbsp;${algo === "astar" ? "|&nbsp; f(n) = g+h" : ""}
+                g(n) = jumlah langkah nyata dari M &nbsp;|&nbsp; h(n) = estimasi langkah ke T
+                ${algo === "astar" ? "&nbsp;|&nbsp; f(n) = g+h" : ""}
             </p>
         </div>`;
     }
+
+    const masalahBox = (!isSuccess && masalah)
+        ? `<p style="margin-top:10px;font-size:12px;padding:8px 12px;background:#fff0f0;border-radius:6px;border-left:3px solid #dc3545;color:#555;">
+            ⚠️ <b>Penyebab Kegagalan:</b> ${masalah}
+           </p>`
+        : "";
 
     detailEl.innerHTML = `
         <div class="path-row">
             <span class="badge ${badge}" style="flex-shrink:0;">Rute ${label}</span>
             ${buildChips(path)}
         </div>
+        ${masalahBox}
         ${buildHTable(path)}
         <p style="margin-top:12px;font-size:12px;color:#aaa;">
             Hover node pada grafik untuk melihat keterangan lengkap.
